@@ -12,9 +12,24 @@
   "jest": {
     "roots": [
       "<rootDir>/src"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "testEnvironment": "node"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel": "^6.23.0",
+    "babel-jest": "^24.1.0",
     "mongodb-memory-server": "^3.0.0"
+  },
+  "scripts": {
+    "jest-debug": "node --expose-gc --max-old-space-size=2048 --inspect ./node_modules/.bin/jest --no-cache --runInBand --logHeapUsage",
+    "seedTests": "cd ./src/__tests__ && for i in {1..500}; do cp -rvfp index-test.js index-test$i.js ;done;"
   }
 }
